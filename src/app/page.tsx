@@ -1,103 +1,170 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import SmoothAccordion from '@/components/SmoothAccordion';
+import LoginModal from '@/components/LoginModal';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function HomePage() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const accordionItems = [
+    {
+      title: 'Learn with Pictures & Play',
+      content:
+        'We use the Multimedia Principle and playful interactions to explain science through visuals, animations, and mini games that help children understand abstract STEM concepts naturally.',
+    },
+    {
+      title: 'Step-by-Step Guidance',
+      content:
+        'Our scaffolding strategy and 7E instructional model break down knowledge into achievable steps, enabling learners to construct their understanding gradually with confidence.',
+    },
+    {
+      title: 'Make Science Make Sense',
+      content:
+        'The SANSE Model helps learners experience immersive, intuitive exploration of science topics with embedded storytelling, spatial memory, and emotional connection.',
+    },
+  ];
+  const toggleAccordion = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+  
+  
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen bg-white text-gray-900 font-sans">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center py-2 px-10 border-b shadow-sm sticky top-0 z-50 bg-white">
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-extrabold tracking-tight">BIOQUEST</h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="flex gap-6 font-medium">
+          <Link href="#">Home</Link>
+          <Link href="#">Learning</Link>
+          <Link href="#">About</Link>
+          <Link href="#">FAQ</Link>
+          <button
+            onClick={() => setIsLoginOpen(true)}
+            className="border border-black text-black text-sm px-3 py-1 rounded-full hover:bg-black hover:text-white transition"
+          >
+            Login
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="flex flex-col md:flex-row items-center justify-between px-10 py-20 gap-10">
+        <motion.div
+          className="w-full md:w-1/2 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/bio.png"
+            alt="BioQuest Logo"
+            width={350}
+            height={350}
+            className="drop-shadow-xl"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        </motion.div>
+
+        <motion.div
+          className="w-full md:w-1/2 text-center md:text-left"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          >
+          <h2 className="text-6xl font-extrabold leading-tight mb-4">
+            Learn biology,<br />make discoveries
+          </h2>
+        </motion.div>
+      </section>
+
+      {/* Try as Student/Teacher Section */}
+      <section className="flex justify-center items-center px-10 mb-16">
+        <motion.div
+          className="flex flex-col md:flex-row gap-6"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          <Link
+            href="/student"
+            className="px-6 py-3 rounded-full border border-neutral-800 text-neutral-800 font-semibold hover:bg-neutral-900 hover:text-white transition duration-300 shadow-md"
+          >
+            👩‍🎓 Try as Student
+          </Link>
+          <Link
+            href="/teacher"
+            className="px-6 py-3 rounded-full border border-neutral-800 text-neutral-800 font-semibold hover:bg-neutral-900 hover:text-white transition duration-300 shadow-md"
+          >
+            🧑‍🏫 Try as Teacher
+          </Link>
+        </motion.div>
+      </section>
+
+
+      {/* Principles Section */}
+      <section className="px-10 py-10 grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h3 className="text-6xl font-bold mb-4">Our learning principles</h3>
+          <p className="text-gray-600 text-lg max-w-md">
+            Grounded in educational research, our principles shape how we teach biology with impact.
+          </p>
+        </div>
+
+        <SmoothAccordion items={accordionItems} />
+      </section>
+
+      {/* Slogan moved here */}
+      <div className="mt-12 ml-6 md:ml-10">
+        <p className="text-2xl text-black italic font-medium">
+          Inspiring a passion for science
+        </p>
+      </div>  
+
+      {/* Founder Story */}
+      <section className="relative mt-20"> {/* ⬅️ 增加 margin-top */}
+  <motion.img
+    src="/05abfc8d-d10e-4707-acb9-146321045f66.png"
+    alt="Mascot"
+    className="absolute -top-14 left-0 w-36 md:w-60 z-30"
+    style={{ transform: 'rotate(-5deg)' }}
+    whileHover={{
+      rotate: [-5, -2, -6, -3, -5],
+      transition: { duration: 0.6, repeat: Infinity, ease: 'easeInOut' },
+    }}
+  />
+
+  <div className="relative z-20 bg-yellow-50 p-8 pl-20 rounded-3xl shadow-md max-w-4xl mx-auto mt-8">
+    <h4 className="text-3xl font-semibold mb-2">🧠 Founder Story</h4>
+    <h5 className="text-2xl font-bold mb-2">
+      “As a liberal arts student, I used to struggle with science...”
+    </h5>
+    <p className="text-gray-700">
+    I struggled with STEM because I never had the right resources to help me connect with science early on.
+      The teaching I received was mostly rote memorization from textbooks. As the concepts became more complex,
+      I lost confidence and interest. This experience inspired me to create BioQuest — a tool that explains
+      science simply, visually, and interactively.
+    </p>
+  </div>
+</section>
+
+      {/* Footer */}
+      <footer className="bg-gray-100 p-6 text-center text-gray-500 text-sm">
+        © 2025 BioQuest · contact@bioquest.app · All rights reserved.
       </footer>
-    </div>
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLoginSuccess={(email) => {
+          console.log('Login success!', email);
+    // 你可以添加逻辑，比如 router.push('/student')，或者设置全局状态等
+        }}
+      />
+    </main>
   );
 }
