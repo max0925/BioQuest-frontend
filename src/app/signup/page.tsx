@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import AIChatbox from '@/components/AIChatbox';
+
 
 
 export default function SignupPage() {
