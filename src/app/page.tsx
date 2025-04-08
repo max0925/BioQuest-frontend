@@ -131,7 +131,7 @@ export default function HomePage() {
   <motion.img
     src="/05abfc8d-d10e-4707-acb9-146321045f66.png"
     alt="Mascot"
-    className="absolute -top-14 left-0 w-36 md:w-60 z-30"
+    className="absolute -top-14 left-0 w-36 md:w-50 z-30"
     style={{ transform: 'rotate(-5deg)' }}
     whileHover={{
       rotate: [-5, -2, -6, -3, -5],

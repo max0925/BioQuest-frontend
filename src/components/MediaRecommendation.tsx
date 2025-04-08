@@ -1,7 +1,7 @@
-// src/components/MediaRecommendation.tsx
 'use client';
 
 import { useState } from 'react';
+import { API_BASE } from '@/lib/config';
 
 export default function MediaRecommendation() {
   const [query, setQuery] = useState('');
@@ -12,45 +12,74 @@ export default function MediaRecommendation() {
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async () => {
+    if (!query.trim()) return;
     setLoading(true);
-    const res = await fetch(`/api/media?q=${query}`);
-    const data = await res.json();
-    setMedia(data);
+
+    try {
+      const [imageRes, videoRes] = await Promise.all([
+        fetch(`${API_BASE}/image?topic=${encodeURIComponent(query)}`),
+        fetch(`${API_BASE}/video?topic=${encodeURIComponent(query)}`),
+      ]);
+
+      const imageData = await imageRes.json();
+      const videoData = await videoRes.json();
+
+      const imageUrl = imageData?.url || '';
+      const videoUrl = videoData?.url || '';
+
+      const embedVideoUrl = videoUrl.includes('youtube.com')
+        ? videoUrl.replace('watch?v=', 'embed/')
+        : '';
+
+      setMedia({
+        imageUrls: imageUrl ? [imageUrl] : [],
+        videoUrls: embedVideoUrl ? [embedVideoUrl] : [],
+      });
+    } catch (err) {
+      console.error('Fetch media failed:', err);
+      setMedia({ imageUrls: [], videoUrls: [] });
+    }
+
     setLoading(false);
   };
 
   return (
     <div className="space-y-4">
+      {/* 输入框 */}
       <div className="flex gap-2">
         <input
           type="text"
-          placeholder="Enter topic (e.g. volcanoes)"
-          className="flex-1 px-4 py-2 border rounded-xl"
+          placeholder="Enter topic (e.g. DNA, photosynthesis)"
+          className="flex-1 px-4 py-2 border rounded-full text-sm"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
         <button
           onClick={handleSearch}
-          className="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700"
+          className="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
         >
           Search
         </button>
       </div>
 
-      {loading && <p className="text-sm text-gray-500">Fetching content...</p>}
+      {/* 加载提示 */}
+      {loading && <p className="text-sm text-gray-500">Fetching media...</p>}
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* 展示内容 */}
+      <div className="flex flex-col md:flex-row gap-4 mt-4">
         {media.imageUrls.map((url, index) => (
-          <img key={index} src={url} alt="Recommended" className="rounded-xl w-full h-40 object-cover" />
+          <img
+            key={index}
+            src={url}
+            alt="Recommended visual"
+            className="rounded-xl w-full md:w-1/2 h-60 object-cover"
+          />
         ))}
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         {media.videoUrls.map((url, index) => (
           <iframe
             key={index}
             src={url}
-            className="w-full h-60 rounded-xl"
+            className="w-full md:w-1/2 h-60 rounded-xl"
             allowFullScreen
           />
         ))}
