@@ -27,11 +27,7 @@ export default function HomePage() {
         'The SANSE Model helps learners experience immersive, intuitive exploration of science topics with embedded storytelling, spatial memory, and emotional connection.',
     },
   ];
-  const toggleAccordion = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-  
-  
+
 
   return (
     <main className="min-h-screen bg-white text-gray-900 font-sans">
