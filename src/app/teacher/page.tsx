@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+
 import { motion } from 'framer-motion';
 import LessonDesignChatbox from '@/components/LessonDesignChatbox';
 import TeacherMediaSearch from '@/components/TeacherMediaSearch'; // ✅ 使用 default 导入
