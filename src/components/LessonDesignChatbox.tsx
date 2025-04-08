@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { API_BASE } from '@/lib/config'; // ✅ 引入后端路径
+import ReactMarkdown from 'react-markdown'; // ✅ 加入 markdown 支持
+import { API_BASE } from '@/lib/config';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -31,7 +32,7 @@ export default function LessonDesignChatbox() {
         },
         body: JSON.stringify({
           message: input,
-          history: updatedHistory,
+          history: updatedHistory.map((msg) => `${msg.role}: ${msg.content}`), // ✅ 转成字符串数组
         }),
       });
 
@@ -87,7 +88,7 @@ export default function LessonDesignChatbox() {
                 : 'bg-gray-100 text-gray-800 self-start mr-auto'
             }`}
           >
-            {msg.content}
+            <ReactMarkdown>{msg.content}</ReactMarkdown>
           </motion.div>
         ))}
 
@@ -98,7 +99,7 @@ export default function LessonDesignChatbox() {
             animate={{ opacity: 1 }}
             className="bg-gray-100 text-gray-800 px-4 py-2 rounded-2xl text-sm leading-relaxed max-w-[75%] self-start mr-auto"
           >
-            {typingResponse}
+            <ReactMarkdown>{typingResponse}</ReactMarkdown>
           </motion.div>
         )}
         <div ref={chatEndRef} />
@@ -124,3 +125,4 @@ export default function LessonDesignChatbox() {
     </div>
   );
 }
+
