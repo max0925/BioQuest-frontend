@@ -6,7 +6,7 @@ import LessonDesignChatbox from '@/components/LessonDesignChatbox';
 import TeacherMediaSearch from '@/components/TeacherMediaSearch'; // ✅ 使用 default 导入
 import StudentAnalyticsSection from '@/components/StudentAnalyticsSection';
 import Header from '@/components/Header';
-
+import Image from 'next/image'; // 引入 Image 组件
 
 export default function TeacherPage() {
   return (
@@ -27,10 +27,11 @@ export default function TeacherPage() {
 
       {/* 🐶 吉祥物 */}
   <div className="flex justify-center md:justify-end">
-    <img
-      src="/mascot-teacher.png"
-      alt="Teacher Mascot"
-      className="w-52 h-52 rounded-xl"
+    <Image
+      src="path/to/your/image.jpg"
+      alt="Image description"
+      width={500} // 必须指定宽度
+      height={500} // 必须指定高度
     />
   </div>
 </motion.section>
