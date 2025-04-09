@@ -28,7 +28,7 @@ export default function TeacherPage() {
       {/* 🐶 吉祥物 */}
   <div className="flex justify-center md:justify-end">
     <Image
-      src="mascot-teacher.jpg"
+      src="mascot-teacher.png"
       alt="Image description"
       width={500} // 必须指定宽度
       height={500} // 必须指定高度
