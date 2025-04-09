@@ -5,8 +5,7 @@ import { useState } from 'react';
 import AIChatbox from '@/components/AIChatbox';
 import MediaRecommendation from '@/components/MediaRecommendation';
 import QuizSection from '@/components/QuizSection';
-import Image from 'next/image';
-import Header from '@/components/Header';
+
 
 
 export default function StudentPage() {
