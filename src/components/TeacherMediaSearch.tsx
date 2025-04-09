@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { API_BASE } from '@/lib/config'; // ✅ 记得创建 config.ts 并引入
+import Image from 'next/image';
 
 export default function TeacherMediaSearch() {
   const [query, setQuery] = useState('');
@@ -64,10 +65,12 @@ export default function TeacherMediaSearch() {
       {/* 图片 + 视频展示 */}
       <div className="flex flex-col md:flex-row gap-4 mt-2">
         {media.imageUrls[0] && (
-          <img
+          <Image
             src={media.imageUrls[0]}
             alt="Visual"
             className="rounded-xl w-full md:w-1/2 h-64 object-cover"
+            width={500} // 请根据实际大小调整宽高
+            height={500}
           />
         )}
         {media.videoUrls[0] && (
