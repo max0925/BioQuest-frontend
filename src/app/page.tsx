@@ -8,7 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HomePage() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const accordionItems = [
     {
