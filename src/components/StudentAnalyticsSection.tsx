@@ -18,7 +18,7 @@ export default function StudentAnalyticsSection() {
             <td className="px-4 py-2 border">Completed</td>
             <td className="px-4 py-2 border">✅</td>
             <td className="px-4 py-2 border text-gray-500 italic">
-              "I loved today’s challenge!"
+              &quot;I loved today&rsquo;s challenge!&quot;
             </td>
           </tr>
           <tr>
@@ -26,7 +26,7 @@ export default function StudentAnalyticsSection() {
             <td className="px-4 py-2 border">Incomplete</td>
             <td className="px-4 py-2 border">❌</td>
             <td className="px-4 py-2 border text-gray-500 italic">
-              "Didn’t understand the volcano part."
+              &quot;Didn’t understand the volcano part.&quot;
             </td>
           </tr>
         </tbody>
