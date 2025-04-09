@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { API_BASE } from '@/lib/config';
+import Image from 'next/image';
 
 export default function MediaRecommendation() {
   const [query, setQuery] = useState('');
@@ -67,13 +68,15 @@ export default function MediaRecommendation() {
 
       {/* 展示内容 */}
       <div className="flex flex-col md:flex-row gap-4 mt-4">
-        {media.imageUrls.map((url, index) => (
-          <img
-            key={index}
-            src={url}
-            alt="Recommended visual"
-            className="rounded-xl w-full md:w-1/2 h-60 object-cover"
-          />
+        {media.imageUrls.map((url, index) => (          
+        <Image
+          key={index}
+          src={url}
+          alt="Recommended visual"
+          className="rounded-xl w-full md:w-1/2 h-60 object-cover"
+          width={500} // 请根据实际大小调整宽高
+          height={500}
+        />
         ))}
         {media.videoUrls.map((url, index) => (
           <iframe
