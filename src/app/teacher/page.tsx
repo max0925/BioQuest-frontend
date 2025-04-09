@@ -30,8 +30,8 @@ export default function TeacherPage() {
     <Image
       src="/mascot-teacher.png"  // 确保路径正确，应该放在 public 文件夹中
       alt="Mascot"
-      width={400}
-      height={400}
+      width={250}
+      height={250}
     />
   </div>
 </motion.section>
