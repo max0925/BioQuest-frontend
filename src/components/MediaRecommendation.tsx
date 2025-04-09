@@ -67,26 +67,24 @@ export default function MediaRecommendation() {
       {loading && <p className="text-sm text-gray-500">Fetching media...</p>}
 
       {/* 展示内容 */}
-      <div className="flex flex-col md:flex-row gap-4 mt-4">
-        {media.imageUrls.map((url, index) => (          
-        <Image
-          key={index}
-          src={url}
-          alt="Recommended visual"
-          className="rounded-xl w-full md:w-1/2 h-60 object-cover"
-          width={500} // 请根据实际大小调整宽高
-          height={500}
-        />
-        ))}
-        {media.videoUrls.map((url, index) => (
-          <iframe
-            key={index}
-            src={url}
-            className="w-full md:w-1/2 h-60 rounded-xl"
-            allowFullScreen
-          />
-        ))}
-      </div>
+      <div className="flex flex-col md:flex-row gap-4 mt-2">
+  {media.imageUrls[0] && (
+    <Image
+      src={media.imageUrls[0]}
+      alt="Visual"
+      className="rounded-xl w-full md:w-1/2 h-64 object-cover"  // 设置相同的样式
+      width={500}  // 使用统一的宽度
+      height={500}  // 使用统一的高度
+    />
+  )}
+  {media.videoUrls[0] && (
+    <iframe
+      src={media.videoUrls[0]}
+      className="w-full md:w-1/2 h-64 rounded-xl"
+      allowFullScreen
+    />
+  )}
+</div>
     </div>
   );
 }
