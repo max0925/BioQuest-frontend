@@ -5,6 +5,9 @@ import { useState } from 'react';
 import AIChatbox from '@/components/AIChatbox';
 import MediaRecommendation from '@/components/MediaRecommendation';
 import QuizSection from '@/components/QuizSection';
+import Image from 'next/image';
+import Header from '@/components/Header';
+
 
 export default function StudentPage() {
   const [checkedIn, setCheckedIn] = useState(false);
@@ -44,7 +47,7 @@ export default function StudentPage() {
         </div>
 
         <div className="md:w-1/2 bg-pink-50 border border-pink-200 rounded-2xl p-6 shadow">
-          <h2 className="text-xl font-semibold mb-4">🌈 How do you feel about today’s learning?</h2>
+          <h2 className="text-xl font-semibold mb-4">🌈 How do you feel about today&apos;s learning?</h2>
           <div className="flex gap-4 mb-4">
             {["😊", "😐", "😢", "😕"].map((emoji) => (
               <button
@@ -90,7 +93,7 @@ export default function StudentPage() {
         <h2 className="text-2xl font-semibold mb-4">📅 Daily Check-in</h2>
         {checkedIn ? (
           <p className="text-green-600 text-lg font-medium">
-            ✅ You've checked in today!
+            ✅ You&apos;ve checked in today!
             <br />
             <span className="text-sm text-gray-500">Last check-in: {lastCheckIn}</span>
           </p>
@@ -133,3 +136,4 @@ export default function StudentPage() {
     </main>
   );
 }
+
