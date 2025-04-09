@@ -28,10 +28,10 @@ export default function TeacherPage() {
       {/* 🐶 吉祥物 */}
   <div className="flex justify-center md:justify-end">
     <Image
-      src="mascot-teacher.png"
-      alt="Image description"
-      width={500} // 必须指定宽度
-      height={500} // 必须指定高度
+      src="/public/mascot.png"  // 确保路径正确，应该放在 public 文件夹中
+      alt="Mascot"
+      width={500}
+      height={500}
     />
   </div>
 </motion.section>
