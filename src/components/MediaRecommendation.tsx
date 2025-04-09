@@ -74,7 +74,6 @@ export default function MediaRecommendation() {
           src={url}
           alt="Recommended visual"
           className="rounded-xl w-full md:w-1/2 h-60 object-cover"
-           layout="responsive"  // 使用 responsive 布局
           width={500} // 请根据实际大小调整宽高
           height={500}
         />
