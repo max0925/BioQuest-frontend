@@ -28,7 +28,7 @@ export default function TeacherPage() {
       {/* 🐶 吉祥物 */}
   <div className="flex justify-center md:justify-end">
     <Image
-      src="/public/mascot.png"  // 确保路径正确，应该放在 public 文件夹中
+      src="/public/mascot-teacher.png"  // 确保路径正确，应该放在 public 文件夹中
       alt="Mascot"
       width={500}
       height={500}
