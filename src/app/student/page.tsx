@@ -157,16 +157,11 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
         href={course.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition"
+        className="block bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition hover:scale-105"
       >
-        {/* 小iframe窗口 */}
-        <div className="aspect-video w-full">
-          <iframe
-            src={course.url}
-            title={course.title}
-            allow="autoplay; fullscreen; vr"
-            className="w-full h-full"
-          ></iframe>
+        {/* 小封面占位图 */}
+        <div className="bg-gray-200 w-full h-48 flex items-center justify-center text-gray-500 text-xl">
+          VR Preview
         </div>
 
         {/* 简介文字 */}
@@ -176,8 +171,7 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
         </div>
       </a>
     ))}
-  </div>
-</section>
+  </
       </main>
     </div>
   );
