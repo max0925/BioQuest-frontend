@@ -129,20 +129,20 @@ export default function StudentPage() {
         </section>
 
         <section className="bg-gray-50 rounded-xl p-6 shadow">
-          <h2 className="text-2xl font-semibold mb-4">🕶️ AR Zone</h2>
-          <p className="text-gray-600 mb-4">Explore this 3D model in your environment:</p>
+          <h2 className="text-2xl font-semibold mb-4">🕶️ VR Experience</h2>
+          <p className="text-gray-600 mb-4">Step into the 3D learning world:</p>
 
           <div className="aspect-video w-full overflow-hidden rounded-xl border">
             <iframe
-              title="AR Model"
-              src="https://sketchfab.com/models/xxxxxxxx/embed"
+              title="VR Space"
+              src="https://framevr.io/venusflytrap"  // ✅ 你的FrameVR链接
               allow="autoplay; fullscreen; vr"
               className="w-full h-full"
             ></iframe>
           </div>
-
+        
           <p className="text-sm text-right text-blue-600 mt-2">
-            <a href="https://sketchfab.com/models/xxxxxxxx" target="_blank" rel="noopener noreferrer">
+            <a href="https://framevr.io/venusflytrap" target="_blank" rel="noopener noreferrer">
               🔗 Open in fullscreen
             </a>
           </p>
