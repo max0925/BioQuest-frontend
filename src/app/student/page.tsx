@@ -71,9 +71,10 @@ export default function StudentPage() {
                   {['😊', '😐', '😢', '😕'].map((emoji) => (
                     <button
                       key={emoji}
-                      className={text-3xl px-2 transition ${
-                        mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
-                      }}
+                      className={`text-3xl px-2 transition ${
+                      mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
+                    }`}
+
                       onClick={() => setMood(emoji)}
                     >
                       {emoji}
@@ -142,7 +143,7 @@ export default function StudentPage() {
           </div>
 
           <p className="text-sm text-right text-blue-600 mt-2">
-            <a href="https://sketchfab.com/models/xxxxxxxx" target="_blank" rel="noopener noreferrer">
+            <a href="src="https://framevr.io/venusflytrap"" target="_blank" rel="noopener noreferrer">
               🔗 Open in fullscreen
             </a>
           </p>
