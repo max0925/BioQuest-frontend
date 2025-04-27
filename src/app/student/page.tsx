@@ -149,7 +149,6 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
   <h2 className="text-2xl font-semibold mb-6">🕶️ VR Learning Zone</h2>
   <p className="text-gray-600 mb-6">Choose a VR experience to explore science concepts!</p>
 
-  {/* 小卡片区 */}
   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
     {vrCourses.map((course, idx) => (
       <a
@@ -159,19 +158,25 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
         rel="noopener noreferrer"
         className="block bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition hover:scale-105"
       >
-        {/* 小封面占位图 */}
-        <div className="bg-gray-200 w-full h-48 flex items-center justify-center text-gray-500 text-xl">
-          VR Preview
+        {/* 封面图片 */}
+        <div className="w-full h-48 overflow-hidden">
+          <img
+            src={course.coverImage || '/default-cover.jpg'}  // 课程封面图，如果没有就放默认图
+            alt={course.title}
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        {/* 简介文字 */}
+        {/* 简介区 */}
         <div className="p-4 space-y-2">
           <h3 className="text-lg font-bold text-gray-900">{course.title}</h3>
           <p className="text-sm text-gray-600">{course.description}</p>
         </div>
       </a>
     ))}
-  </
+  </div>
+</section>
+
       </main>
     </div>
   );
