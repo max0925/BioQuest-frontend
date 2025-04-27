@@ -24,6 +24,7 @@ export default function StudentPage() {
   //   url: "https://framevr.io/your-other-frame",
   // },
 ];
+const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
 //————————————————————
   
   const [lastCheckIn, setLastCheckIn] = useState<string | null>(null);
@@ -87,9 +88,9 @@ export default function StudentPage() {
                   {['😊', '😐', '😢', '😕'].map((emoji) => (
                     <button
                       key={emoji}
-                      className={`text-3xl px-2 transition ${
+                      className={text-3xl px-2 transition ${
                         mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
-                      }`}
+                      }}
                       onClick={() => setMood(emoji)}
                     >
                       {emoji}
@@ -144,29 +145,40 @@ export default function StudentPage() {
           <QuizSection />
         </section>
 
-        <section className="bg-gray-50 rounded-xl p-6 shadow space-y-6 text-center">
+        <section className="bg-gray-50 rounded-xl p-6 shadow space-y-6">
   <h2 className="text-2xl font-semibold mb-6">🕶️ VR Learning Zone</h2>
-  <p className="text-gray-600 mb-6">Explore the Venus Flytrap as a complex system!</p>
+  <p className="text-gray-600 mb-6">Choose a VR experience to explore science concepts!</p>
 
-  {/* 小尺寸iframe展示 */}
-  <div className="mx-auto w-[400px] h-[250px] rounded-xl overflow-hidden border">
-    <iframe
-      title="Venus Flytrap VR"
-      src="https://framevr.io/venusflytrap"
-      allow="autoplay; fullscreen; vr"
-      className="w-full h-full"
-    ></iframe>
+  {/* 小卡片区 */}
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {vrCourses.map((course, idx) => (
+      <a
+        key={idx}
+        href={course.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition"
+      >
+        {/* 小iframe窗口 */}
+        <div className="aspect-video w-full">
+          <iframe
+            src={course.url}
+            title={course.title}
+            allow="autoplay; fullscreen; vr"
+            className="w-full h-full"
+          ></iframe>
+        </div>
+
+        {/* 简介文字 */}
+        <div className="p-4 space-y-2">
+          <h3 className="text-lg font-bold text-gray-900">{course.title}</h3>
+          <p className="text-sm text-gray-600">{course.description}</p>
+        </div>
+      </a>
+    ))}
   </div>
-
-  {/* 打开新页面的链接 */}
-  <p className="text-sm text-blue-600 mt-4">
-    <a href="https://framevr.io/venusflytrap" target="_blank" rel="noopener noreferrer">
-      🔗 Open in fullscreen
-    </a>
-  </p>
 </section>
       </main>
     </div>
   );
 }
-
