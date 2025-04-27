@@ -16,6 +16,7 @@ export default function StudentPage() {
     title: "Venus Flytrap: Complex Systems",
     description: "Explore how the Venus flytrap demonstrates characteristics of complex systems, such as emergence and adaptation.",
     url: "https://framevr.io/venusflytrap",
+    coverImage: "/images/venus-flytrap-cover.jpg",
   },
   // 以后可以继续加，比如：
   // {
