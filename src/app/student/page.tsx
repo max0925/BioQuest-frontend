@@ -146,38 +146,37 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
         </section>
 
         <section className="bg-gray-50 rounded-xl p-6 shadow space-y-6">
-  <h2 className="text-2xl font-semibold mb-4">🕶️ VR Learning Zone</h2>
+  <h2 className="text-2xl font-semibold mb-6">🕶️ VR Learning Zone</h2>
   <p className="text-gray-600 mb-6">Choose a VR experience to explore science concepts!</p>
 
-  <div className="grid md:grid-cols-2 gap-6">
+  {/* 小卡片区 */}
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
     {vrCourses.map((course, idx) => (
-      <div
+      <a
         key={idx}
-        className={`p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md ${
-          selectedCourse.title === course.title ? 'border-blue-500' : 'border-gray-200'
-        }`}
-        onClick={() => setSelectedCourse(course)}
+        href={course.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition"
       >
-        <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-        <p className="text-gray-600 text-sm">{course.description}</p>
-      </div>
+        {/* 小iframe窗口 */}
+        <div className="aspect-video w-full">
+          <iframe
+            src={course.url}
+            title={course.title}
+            allow="autoplay; fullscreen; vr"
+            className="w-full h-full"
+          ></iframe>
+        </div>
+
+        {/* 简介文字 */}
+        <div className="p-4 space-y-2">
+          <h3 className="text-lg font-bold text-gray-900">{course.title}</h3>
+          <p className="text-sm text-gray-600">{course.description}</p>
+        </div>
+      </a>
     ))}
   </div>
-
-  <div className="aspect-video w-full overflow-hidden rounded-xl border mt-6">
-    <iframe
-      title={selectedCourse.title}
-      src={selectedCourse.url}
-      allow="autoplay; fullscreen; vr"
-      className="w-full h-full"
-    ></iframe>
-  </div>
-
-  <p className="text-sm text-right text-blue-600 mt-2">
-    <a href={selectedCourse.url} target="_blank" rel="noopener noreferrer">
-      🔗 Open {selectedCourse.title} in fullscreen
-    </a>
-  </p>
 </section>
       </main>
     </div>
