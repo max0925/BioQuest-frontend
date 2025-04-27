@@ -10,6 +10,23 @@ import Header from '@/components/Header';
 
 export default function StudentPage() {
   const [checkedIn, setCheckedIn] = useState(false);
+  #这里是新加的内容
+  const vrCourses = [
+  {
+    title: "Venus Flytrap: Complex Systems",
+    description: "Explore how the Venus flytrap demonstrates characteristics of complex systems, such as emergence and adaptation.",
+    url: "https://framevr.io/venusflytrap",
+  },
+  // 以后可以继续加，比如：
+  // {
+  //   title: "Coral Reef Ecosystems",
+  //   description: "Learn about biodiversity and interdependence.",
+  //   url: "https://framevr.io/your-other-frame",
+  // },
+];
+const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
+#————————————————————
+  
   const [lastCheckIn, setLastCheckIn] = useState<string | null>(null);
   const [mood, setMood] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -71,10 +88,9 @@ export default function StudentPage() {
                   {['😊', '😐', '😢', '😕'].map((emoji) => (
                     <button
                       key={emoji}
-                      className={`text-3xl px-2 transition ${
-                      mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
-                    }`}
-
+                      className={text-3xl px-2 transition ${
+                        mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
+                      }}
                       onClick={() => setMood(emoji)}
                     >
                       {emoji}
@@ -129,25 +145,40 @@ export default function StudentPage() {
           <QuizSection />
         </section>
 
-        <section className="bg-gray-50 rounded-xl p-6 shadow">
-          <h2 className="text-2xl font-semibold mb-4">🕶️ AR Zone</h2>
-          <p className="text-gray-600 mb-4">Explore this 3D model in your environment:</p>
+        <section className="bg-gray-50 rounded-xl p-6 shadow space-y-6">
+  <h2 className="text-2xl font-semibold mb-4">🕶️ VR Learning Zone</h2>
+  <p className="text-gray-600 mb-6">Choose a VR experience to explore science concepts!</p>
 
-          <div className="aspect-video w-full overflow-hidden rounded-xl border">
-            <iframe
-              title="AR Model"
-              src="https://sketchfab.com/models/xxxxxxxx/embed"
-              allow="autoplay; fullscreen; vr"
-              className="w-full h-full"
-            ></iframe>
-          </div>
+  <div className="grid md:grid-cols-2 gap-6">
+    {vrCourses.map((course, idx) => (
+      <div
+        key={idx}
+        className={p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md ${
+          selectedCourse.title === course.title ? 'border-blue-500' : 'border-gray-200'
+        }}
+        onClick={() => setSelectedCourse(course)}
+      >
+        <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+        <p className="text-gray-600 text-sm">{course.description}</p>
+      </div>
+    ))}
+  </div>
 
-          <p className="text-sm text-right text-blue-600 mt-2">
-            <a href="src="https://framevr.io/venusflytrap"" target="_blank" rel="noopener noreferrer">
-              🔗 Open in fullscreen
-            </a>
-          </p>
-        </section>
+  <div className="aspect-video w-full overflow-hidden rounded-xl border mt-6">
+    <iframe
+      title={selectedCourse.title}
+      src={selectedCourse.url}
+      allow="autoplay; fullscreen; vr"
+      className="w-full h-full"
+    ></iframe>
+  </div>
+
+  <p className="text-sm text-right text-blue-600 mt-2">
+    <a href={selectedCourse.url} target="_blank" rel="noopener noreferrer">
+      🔗 Open {selectedCourse.title} in fullscreen
+    </a>
+  </p>
+</section>
       </main>
     </div>
   );
