@@ -24,7 +24,6 @@ export default function StudentPage() {
   //   url: "https://framevr.io/your-other-frame",
   // },
 ];
-const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
 #————————————————————
   
   const [lastCheckIn, setLastCheckIn] = useState<string | null>(null);
@@ -85,17 +84,18 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
               <>
                 <p className="mb-3 text-gray-700 font-medium">How do you feel about today&apos;s learning?</p>
                 <div className="flex justify-center gap-3 text-2xl mb-4">
-                  {['😊', '😐', '😢', '😕'].map((emoji) => (
-                    <button
-                      key={emoji}
-                      className={text-3xl px-2 transition ${
-                        mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
-                      }}
-                      onClick={() => setMood(emoji)}
-                    >
-                      {emoji}
-                    </button>
-                  ))}
+                 {['😊', '😐', '😢', '😕'].map((emoji) => (
+                  <button
+                    key={emoji}
+                    className={`text-3xl px-2 transition ${
+                      mood === emoji ? 'scale-125' : 'opacity-50 hover:opacity-100'
+                    }`}
+                    onClick={() => setMood(emoji)}
+                  >
+                    {emoji}
+                  </button>
+                ))}
+
                 </div>
                 <textarea
                   placeholder="Leave your feedback here..."
@@ -153,9 +153,9 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
     {vrCourses.map((course, idx) => (
       <div
         key={idx}
-        className={p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md ${
+        className={`p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md ${
           selectedCourse.title === course.title ? 'border-blue-500' : 'border-gray-200'
-        }}
+        }`}
         onClick={() => setSelectedCourse(course)}
       >
         <h3 className="text-lg font-bold mb-2">{course.title}</h3>
