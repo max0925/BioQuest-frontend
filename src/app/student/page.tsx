@@ -11,6 +11,7 @@ import Header from '@/components/Header';
 export default function StudentPage() {
   const [checkedIn, setCheckedIn] = useState(false);
   //这里是新加的内容
+  const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
   const vrCourses = [
   {
     title: "Venus Flytrap: Complex Systems",
