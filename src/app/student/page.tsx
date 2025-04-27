@@ -24,7 +24,6 @@ export default function StudentPage() {
   //   url: "https://framevr.io/your-other-frame",
   // },
 ];
-const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
 //————————————————————
   
   const [lastCheckIn, setLastCheckIn] = useState<string | null>(null);
