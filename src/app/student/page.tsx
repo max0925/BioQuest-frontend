@@ -18,12 +18,11 @@ export default function StudentPage() {
     description: "Explore how the Venus flytrap demonstrates characteristics of complex systems, such as emergence and adaptation.",
     url: "https://framevr.io/venusflytrap",
   },
-  // 以后可以继续加，比如：
-  // {
-  //   title: "Coral Reef Ecosystems",
-  //   description: "Learn about biodiversity and interdependence.",
-  //   url: "https://framevr.io/your-other-frame",
-  // },
+  {
+    title: "DNA Mutation: Explore Genetic Change",
+    description: "Enter an immersive VR world to observe how mutations occur in DNA and how they affect organisms.",
+    url: "https://framevr.io/capstone123",
+  }
 ];
 const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
 //————————————————————
