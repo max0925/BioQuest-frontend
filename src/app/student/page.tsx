@@ -149,38 +149,20 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
         <section className="bg-gradient-to-br from-indigo-50 to-white rounded-xl p-6 shadow space-y-6">
   <h2 className="text-2xl font-semibold">🕶️ VR Learning Zone</h2>
   <p className="text-gray-600">Choose a VR space to explore science up close!</p>
-  <div className="grid md:grid-cols-2 gap-6">
-    {vrCourses.map((course, idx) => (
-      <div
-        key={idx}
-        className={`p-4 border-2 rounded-xl cursor-pointer transition ${
-           selectedCourse.title === course.title
-             ? 'border-blue-500 bg-white shadow-lg'
-             : 'border-gray-200 hover:border-blue-300'
-         }`}
-
-        onClick={() => setSelectedCourse(course)}
-      >
-        <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-        <p className="text-gray-600 text-sm">{course.description}</p>
-      </div>
-    ))}
-  </div>
-
-  <div className="aspect-video w-full overflow-hidden rounded-xl border mt-6">
-    <iframe
-      title={selectedCourse.title}
-      src={selectedCourse.url}
-      allow="autoplay; fullscreen; vr"
-      className="w-full h-full"
-    ></iframe>
-  </div>
-
-  <p className="text-sm text-right text-blue-600 mt-2">
-    <a href={selectedCourse.url} target="_blank" rel="noopener noreferrer">
-      🔗 Open {selectedCourse.title} in fullscreen
+ <div className="grid md:grid-cols-2 gap-6">
+  {vrCourses.map((course, idx) => (
+    <a
+      key={idx}
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md hover:border-blue-400 hover:bg-white"
+    >
+      <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+      <p className="text-gray-600 text-sm">{course.description}</p>
     </a>
-  </p>
+  ))}
+</div>
 </section>
       </main>
     </div>
