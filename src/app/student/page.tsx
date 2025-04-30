@@ -159,8 +159,11 @@ export default function StudentPage() {
       rel="noopener noreferrer"
       className="block p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md hover:border-blue-400 hover:bg-white"
     >
-      <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-      <p className="text-gray-600 text-sm">{course.description}</p>
+      <Image
+        src={course.coverImage}
+        alt={course.title}
+        width={
+
     </a>
   ))}
 </div>
