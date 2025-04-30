@@ -146,17 +146,19 @@ const [selectedCourse, setSelectedCourse] = useState(vrCourses[0]);
           <QuizSection />
         </section>
 
-        <section className="bg-gray-50 rounded-xl p-6 shadow space-y-6">
-  <h2 className="text-2xl font-semibold mb-4">🕶️ VR Learning Zone</h2>
-  <p className="text-gray-600 mb-6">Choose a VR experience to explore science concepts!</p>
-
+        <section className="bg-gradient-to-br from-indigo-50 to-white rounded-xl p-6 shadow space-y-6">
+  <h2 className="text-2xl font-semibold">🕶️ VR Learning Zone</h2>
+  <p className="text-gray-600">Choose a VR space to explore science up close!</p>
   <div className="grid md:grid-cols-2 gap-6">
     {vrCourses.map((course, idx) => (
       <div
         key={idx}
-        className={`p-4 border rounded-xl cursor-pointer shadow transition hover:shadow-md ${
-          selectedCourse.title === course.title ? 'border-blue-500' : 'border-gray-200'
-        }`}
+        className={`p-4 border-2 rounded-xl cursor-pointer transition ${
+           selectedCourse.title === course.title
+             ? 'border-blue-500 bg-white shadow-lg'
+             : 'border-gray-200 hover:border-blue-300'
+         }`}
+
         onClick={() => setSelectedCourse(course)}
       >
         <h3 className="text-lg font-bold mb-2">{course.title}</h3>
