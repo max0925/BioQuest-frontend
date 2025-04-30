@@ -166,8 +166,8 @@ export default function StudentPage() {
         height={280}
         className="rounded-lg mb-3 object-cover"
       />
-
-
+    <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+    <p className="text-gray-600 text-sm">{course.description}</p>
     </a>
   ))}
 </div>
