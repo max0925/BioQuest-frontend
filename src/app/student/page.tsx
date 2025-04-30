@@ -17,11 +17,13 @@ export default function StudentPage() {
     title: "Venus Flytrap: Complex Systems",
     description: "Explore how the Venus flytrap demonstrates characteristics of complex systems, such as emergence and adaptation.",
     url: "https://framevr.io/venusflytrap",
+    coverImage: "/images/venus-vr.jpg",
   },
   {
     title: "DNA Mutation: Explore Genetic Change",
     description: "Enter an immersive VR world to observe how mutations occur in DNA and how they affect organisms.",
     url: "https://framevr.io/capstone123",
+    coverImage: "/images/dna-vr.jpg",
   }
 ];
 //————————————————————
