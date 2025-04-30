@@ -162,7 +162,11 @@ export default function StudentPage() {
       <Image
         src={course.coverImage}
         alt={course.title}
-        width={
+        width={500}
+        height={280}
+        className="rounded-lg mb-3 object-cover"
+      />
+
 
     </a>
   ))}
