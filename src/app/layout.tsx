@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,17 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-    {/* ✅ GoatCounter 统计脚本 */}
-    <script
-      data-goatcounter="https://bioquest.goatcounter.com/count"
-      async
-      src="//gc.zgo.at/count.js"
-    ></script>
-  </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ✅ 用 next/script 注入 GoatCounter */}
+        <Script
+          data-goatcounter="https://bioquest.goatcounter.com/count"
+          strategy="afterInteractive"
+          src="//gc.zgo.at/count.js"
+        />
         {children}
       </body>
     </html>
