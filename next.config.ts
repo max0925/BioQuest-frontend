@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_API_BASE: process.env.NEXT_PUBLIC_API_BASE || 'https://bioquest-backend.onrender.com', // API 网址
   },
-  experimental: {
-    appDir: true, // ✅ 告诉 Next.js 正确启用 src/app 路由结构
-  },
 };
 
 export default nextConfig;
