@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "BioQuest",
     images: [
       {
-        url: "https://yourdomain.com/bio.png", // 👈 logo 图片公网地址
+        url: "https://bioquest-ruby.vercel.app/bio.png", // 👈 logo 图片公网地址
         width: 800,
         height: 800,
         alt: "BioQuest Logo",
