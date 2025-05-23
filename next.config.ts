@@ -9,5 +9,4 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_API_BASE: process.env.NEXT_PUBLIC_API_BASE || 'https://bioquest-backend.onrender.com', // API 网址
   },
 };
-
 export default nextConfig;
