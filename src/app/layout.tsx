@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "BioQuest: Master STEM Concepts Visually with AI + AR",
   description: "BioQuest is an AI-powered STEM learning platform that helps students understand complex science topics with images, videos, interactive quizzes, and AR experiences.",
   icons: {
-    icon: "/favicon.ico?v=3", // 👈 logo 图片放在 public/bio.png
+    icon: "/bioquest-icon.ico?v=3", // 👈 logo 图片放在 public/bio.png
   },
   openGraph: {
     title: "BioQuest",
