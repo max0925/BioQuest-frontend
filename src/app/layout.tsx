@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BioQuest",
     description: "Visual, AI-guided learning across STEM: biology, physics, chemistry and more.",
-    url: "https://yourdomain.com", // 👈 替换成你的实际部署地址
+    url: "https://bioquest-ruby.vercel.app/", // 👈 替换成你的实际部署地址
     siteName: "BioQuest",
     images: [
       {
