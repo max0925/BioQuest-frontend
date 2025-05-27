@@ -17,16 +17,16 @@ export const metadata: Metadata = {
   title: "BioQuest: Master STEM Concepts Visually with AI + AR",
   description: "BioQuest is an AI-powered STEM learning platform that helps students understand complex science topics with images, videos, interactive quizzes, and AR experiences.",
   icons: {
-    icon: "/bioquest-icon.ico?v=3", // 👈 logo 图片放在 public/bio.png
+    icon: "/bioquest-icon.ico?v=3",
   },
   openGraph: {
     title: "BioQuest",
     description: "Visual, AI-guided learning across STEM: biology, physics, chemistry and more.",
-    url: "https://bioquest-ruby.vercel.app/", // 👈 替换成你的实际部署地址
+    url: "https://bioquest-ruby.vercel.app/",
     siteName: "BioQuest",
     images: [
       {
-        url: "https://bioquest-ruby.vercel.app/bio.png", // 👈 logo 图片公网地址
+        url: "https://bioquest-ruby.vercel.app/bio.png",
         width: 800,
         height: 800,
         alt: "BioQuest Logo",
@@ -42,12 +42,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
-    <html lang="en">
-=======
-    <html lang="en"suppressHydrationWarning>
->>>>>>> d2f8f9b (feat: upgrade STEM-wide AI, quiz age support, AR courses, and UI/UX polish)
-     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* ✅ 用 next/script 注入 GoatCounter */}
         <Script
           data-goatcounter="https://bioquest.goatcounter.com/count"
