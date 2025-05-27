@@ -42,7 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<<<<<<< HEAD
     <html lang="en">
+=======
+    <html lang="en"suppressHydrationWarning>
+>>>>>>> d2f8f9b (feat: upgrade STEM-wide AI, quiz age support, AR courses, and UI/UX polish)
      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* ✅ 用 next/script 注入 GoatCounter */}
         <Script

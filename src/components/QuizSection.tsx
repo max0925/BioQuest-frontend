@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 interface Question {
@@ -17,6 +17,19 @@ export default function QuizSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState('10-12');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const saved = window.localStorage.getItem('bioquest-age-group');
+    if (saved) {
+      setSelectedAgeGroup(saved);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('bioquest-age-group', selectedAgeGroup);
+  }, [selectedAgeGroup]);
 
   const fetchQuiz = async () => {
     if (!topic.trim()) return;
@@ -27,7 +40,10 @@ export default function QuizSection() {
       const res = await fetch('https://max0925-bioquest.hf.space/quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic }),
+        body: JSON.stringify({
+          topic,
+          age_group: selectedAgeGroup, // ✅ Send age group to backend
+        }),
       });
   
       const data = await res.json();
@@ -60,7 +76,7 @@ export default function QuizSection() {
 
   return (
     <div className="space-y-6">
-      {/* 输入 + 按钮 */}
+      {/* Input field and generate button */}
       <div className="flex gap-2">
         <input
           type="text"
@@ -77,12 +93,27 @@ export default function QuizSection() {
         </button>
       </div>
 
-      {/* 加载中 */}
+      {/* Age group selector */}
+      <div className="mt-2">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Select your age group:</label>
+        <select
+          value={selectedAgeGroup}
+          onChange={(e) => setSelectedAgeGroup(e.target.value)}
+          className="px-4 py-2 border border-gray-300 rounded-xl text-sm"
+        >
+          <option value="7-9">Ages 7–9 (Elementary Lower)</option>
+          <option value="10-12">Ages 10–12 (Elementary Upper)</option>
+          <option value="13-15">Ages 13–15 (Middle School)</option>
+          <option value="16-18">Ages 16–18 (High School)</option>
+          <option value="18+">Ages 18+ (Adult Learners)</option>
+        </select>
+      </div>
+
+      {/* Loading and error messages */}
       {loading && <p className="text-sm text-gray-500">🔄 Generating quiz...</p>}
-      {/* 错误提示 */}
       {error && <p className="text-sm text-red-500">{error}</p>}
 
-      {/* 题目展示 */}
+      {/* Quiz questions display */}
       {questions.map((q, index) => (
         <div key={index} className="border p-4 rounded-xl bg-white shadow">
           <h3 className="text-lg font-semibold mb-2">{q.question}</h3>
@@ -109,7 +140,7 @@ export default function QuizSection() {
             })}
           </div>
 
-          {/* 答案解析 */}
+          {/* Answer explanation */}
           {submitted && (
             <div className="mt-2 text-sm text-gray-600">
               <p>
@@ -121,7 +152,7 @@ export default function QuizSection() {
         </div>
       ))}
 
-      {/* 提交按钮 */}
+      {/* Submit button */}
       {!submitted && questions.length > 0 && (
         <button
           onClick={handleSubmit}
