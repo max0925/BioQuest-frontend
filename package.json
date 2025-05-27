@@ -9,20 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-  "framer-motion": "^12.6.2",
-  "next": "15.2.4",
-  "react": "^19.0.0",
-  "react-dom": "^19.0.0",
-  "react-markdown": "^10.1.0"
-=======
-    "cors": "^2.8.5",
-    "framer-motion": "^12.6.2",
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-markdown": "^10.1.0"
->>>>>>> d2f8f9b (feat: upgrade STEM-wide AI, quiz age support, AR courses, and UI/UX polish)
+
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
