@@ -74,6 +74,7 @@ export default function LessonDesignChatbox() {
         }
       }, 18);
     } catch (err) {
+      console.error(err);
       setIsThinking(false);
       setMessages((prev) => [
         ...prev,
