@@ -69,6 +69,7 @@ export default function AIChatbox() {
         }
       }, 18);
     } catch (err) {
+      console.error(err);
       setIsThinking(false);
       setMessages((prev) => [
         ...prev,
