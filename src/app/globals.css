@@ -48,16 +48,3 @@ body {
     transform: translateX(0);
   }
 }
-
-@keyframes panToRight {
-  0% {
-    background-position: left center;
-  }
-  100% {
-    background-position: right center;
-  }
-}
-
-.animate-pan-to-right {
-  animation: panToRight 2.8s ease-out forwards;
-}
