@@ -9,10 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "cors": "^2.8.5",
+    "framer-motion": "^12.6.2",
+>>>>>>> c0bda2d (Update main page layout with image overlap, animation, and responsive tweaks)
     "next": "15.2.4",
     "react": "^19.0.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
+<<<<<<< HEAD
     "framer-motion": "^12.6.2",
+=======
+    "react-intersection-observer": "^9.16.0",
+>>>>>>> c0bda2d (Update main page layout with image overlap, animation, and responsive tweaks)
     "react-markdown": "^10.1.0"
   },
   "devDependencies": {
